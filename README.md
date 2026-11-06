@@ -4,7 +4,7 @@ I'm a Full Stack Developer (Vue.js, React, Node.js, TypeScript) learning DevOps 
 
 For about 6 months I've **studied** DevOps concepts. Now I'm **building and documenting** them hands-on, so this repo records what I actually run, what breaks, and what I learn from it.
 
-> **Honest status:** the learning map below is what I've studied. The 30-day build log is where I turn it into practice. Items are only marked done once I've run them myself.
+> **Honest status:** the learning map below is what I've studied. The build log is where I turn it into practice. A week is marked done only after I've run it myself.
 
 ---
 
@@ -20,13 +20,13 @@ For about 6 months I've **studied** DevOps concepts. Now I'm **building and docu
 
 ---
 
-## 30-day build log (practiced)
+## Build log (practiced)
 
-I'm using one project, **E-waste Trade Hub** (MERN stack), as the base for every step.
+I'm building on a Next.js + Node/Express app I contribute to (the app's repos are private, so this repo holds only the DevOps files, with names and secrets removed).
 
 | Week | Goal | Status |
 |------|------|--------|
-| 1 | Dockerize the app (Dockerfile, docker-compose). Deploy on EC2 behind Nginx, with SSH access. | ⬜ Not started |
+| 1 | Dockerize frontend and backend. Deploy on EC2 behind an Nginx reverse proxy. | ✅ Done: [week-1-docker-ec2](./week-1-docker-ec2) |
 | 2 | GitHub Actions CI/CD: build, test, push to ECR, deploy to ECS | ⬜ Not started |
 | 3 | Kubernetes on minikube or kind: Deployment, Service, Ingress, ConfigMap, Secret, HPA. Package with Helm. | ⬜ Not started |
 | 4 | GitOps with ArgoCD, plus Prometheus and Grafana monitoring | ⬜ Not started |
@@ -35,30 +35,31 @@ Status key: ⬜ not started · 🟨 in progress · ✅ done and working
 
 ---
 
+## Mistakes log
+
+Everything that broke, and how I fixed it: [mistakes.md](./mistakes.md)
+
+---
+
 ## Repo structure
 
 ```
 devops-learning-journey/
 ├── README.md
-├── notes/                  # short notes per topic (what I understood, in my own words)
-│   ├── 01-foundations.md
-│   ├── 02-docker.md
-│   ├── 03-aws.md
-│   ├── 04-kubernetes.md
-│   └── 05-gitops.md
-├── week-1-docker-ec2/      # Dockerfile, docker-compose.yml, nginx.conf, README
-├── week-2-cicd-ecs/        # .github/workflows, ECS task definition, README
-├── week-3-kubernetes/      # manifests/, helm-chart/, README
-├── week-4-gitops-monitoring/  # argocd/, prometheus/, grafana/, README
-└── mistakes.md             # things that broke and how I fixed them
+├── mistakes.md
+├── .gitignore
+└── week-1-docker-ec2/
+    ├── README.md
+    ├── docker-compose.yml
+    ├── Dockerfile.frontend
+    ├── Dockerfile.backend
+    ├── .env.example
+    ├── server.env.example
+    ├── nginx/default.conf
+    └── docs/architecture.png
 ```
 
-Each `week-*` folder has its own README with:
-1. What I built
-2. Architecture diagram or screenshot
-3. Commands I ran
-4. What broke and how I fixed it
-5. What I'd do differently
+Each `week-*` folder has its own README: what I built, the architecture, the commands I ran, what broke, and what I'd do differently.
 
 ---
 
@@ -66,17 +67,15 @@ Each `week-*` folder has its own README with:
 
 - Only claim what I've actually run.
 - No secrets, keys, or credentials in the repo. I use `.env.example` and placeholders.
-- No company or client code. Everything here is built on my own projects.
-- Set an AWS billing alarm first, and shut down resources after each session.
+- No company or client code, and no private project names.
+- Set an AWS billing alarm first, and stop or terminate resources after each session.
 
 ---
 
 ## Posts
 
-I share progress on LinkedIn as I go.
-
-- Post 1: *6 months of DevOps, my learning map* (link coming)
-- Post 2: *30 days of DevOps, the plan* (link coming)
+- Post 1: 6 months of DevOps, my learning map (add link)
+- Post 2: Dockerized app on AWS EC2, and the 5 things that broke (add link)
 
 ---
 
