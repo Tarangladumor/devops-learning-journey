@@ -1,0 +1,14 @@
+services:
+  server:
+    image: ${ECR_REGISTRY}/studynotion-server:latest
+    env_file:
+      - ./server.env
+    restart: unless-stopped
+
+  client:
+    image: ${ECR_REGISTRY}/studynotion-client:latest
+    ports:
+      - "80:80"
+    depends_on:
+      - server
+    restart: unless-stopped
